@@ -66,3 +66,6 @@ crashlytics-build.properties
 #Ignore plugins
 Assets/Plugins
 Assets/Plugins.meta
+
+#Ignore editor file
+.vscode/
