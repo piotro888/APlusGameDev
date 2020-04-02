@@ -29,14 +29,14 @@ public class BuildingRenderrer : MonoBehaviour
                 int num = building[i,j];
                 for(int k=0; k<gameObjects.Length; k++){
                     if((num & (1<<k)) != 0){
-                        createBlock(k, i, j);
+                        addElement(k, i, j);
                     }
                 }
             }
         }
     }
 
-    public void createBlock(int id, int x, int y){
+    public void addElement(int id, int x, int y){
         Vector3 blockPosition = transform.position + new Vector3(y, x, 0);
         buildingGameObjects[x,y,id] =  (GameObject) Instantiate(
             gameObjects[id],
