@@ -7,14 +7,10 @@ public class BuildingRenderrer : MonoBehaviour
         {0, 3, 1, 1, 1, 0},
         {0, 0, 0, 3, 0, 0}
     };
-    
-    void Start(){
-        render(); //only for testing
-    }
 
     ///Render building based on public building array.
     public void render(){
-        for(int i=building.GetLength(0)-1; i>=0; i--){
+        for(int i=0; i<building.GetLength(0); i++){
             for(int j=0; j<building.GetLength(1); j++){
                 createBlock(building[i,j], i, j);    
             }
