@@ -128,6 +128,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6354623467762020129, guid: 8c2caaa2b26d2b26b9063c91c6c91e48,
+        type: 3}
+      propertyPath: frameLineShift
+      value: -2
+      objectReference: {fileID: 0}
     - target: {fileID: 1224297857737522107, guid: 8c2caaa2b26d2b26b9063c91c6c91e48,
         type: 3}
       propertyPath: m_LocalPosition.x
