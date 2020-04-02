@@ -17,4 +17,5 @@ public class BuildingController : MonoBehaviour
         }
         return (count >= minInLine ? true : false);
     }
+
 }

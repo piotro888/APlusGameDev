@@ -20,6 +20,8 @@ public class BuildingRenderrer : MonoBehaviour
         {1, 17, 0, 2, 66, 65}
     };
 
+    private GameObject[,,] buildingGameObjects = new GameObject[2, 6, 8];
+
     ///Render building based on public building array.
     public void render(){
         for(int i=0; i<building.GetLength(0); i++){
@@ -34,11 +36,26 @@ public class BuildingRenderrer : MonoBehaviour
         }
     }
 
-    void createBlock(int id, int x, int y){
+    public void createBlock(int id, int x, int y){
         Vector3 blockPosition = transform.position + new Vector3(y, x, 0);
-        Instantiate(
+        buildingGameObjects[x,y,id] =  (GameObject) Instantiate(
             gameObjects[id],
             blockPosition,
             Quaternion.identity);
+    }
+
+    public void deleteBlock(int x, int y){
+        for(int i=0; i<gameObjects.Length; i++){
+            if((building[x,y] & (1<<i)) != 0){
+                deleteElement(i, x, y);
+            }
+        }
+        building[x, y] = 0;
+    }
+
+    public void deleteElement(int id, int x, int y){
+        Destroy(buildingGameObjects[x, y, id]);
+        buildingGameObjects[x, y, id] = null;
+        building[x, y] &= ~(1<<id);
     }
 }
