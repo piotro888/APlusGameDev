@@ -4,6 +4,7 @@ using UnityEngine;
 public class BuildingController : MonoBehaviour
 {
     public BuildingRenderrer buildingRenderrer;
+    public TempBombGen tempBombGen;
     public float frameLineShift = -2.0f;
 
     int minInLine = 4;
@@ -13,6 +14,7 @@ public class BuildingController : MonoBehaviour
 
     void Start(){
         buildingRenderrer.render(); //render building on start
+        tempBombGen.Spawn();
     }
 
     public bool checkIfLineValid(int line){
@@ -51,5 +53,17 @@ public class BuildingController : MonoBehaviour
                 break;
             }
         }
+    }
+
+    public GameObject attachBomb(GameObject bomb, int x, int y){
+        GameObject attachedElement = null;
+        for(int i=0; i<buildingRenderrer.gameObjects.Length; i++){
+            if(buildingRenderrer.buildingGameObjects[x, y, i] != null){
+                attachedElement = buildingRenderrer.buildingGameObjects[x, y, i];
+                bomb.transform.position = attachedElement.transform.position;
+                bomb.transform.SetParent(attachedElement.transform);
+            }
+        }
+        return attachedElement;
     }
 }
