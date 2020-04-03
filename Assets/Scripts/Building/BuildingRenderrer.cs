@@ -17,14 +17,14 @@ public class BuildingRenderrer : MonoBehaviour
         (Bitmask)
     */
     public int[,] building = {
-        {1, 1, 1, 17, 1, 1},
-        {1, 1, 1, 17, 1, 1},
-        {1, 1, 1, 17, 1, 1},
-        {1, 1, 1, 17, 1, 1},
-        {1, 17, 0, 2, 66, 65}
+        {1, 1, 1, 17, 1, 1, 2, 2, 2, 1},
+        {1, 1, 1, 17, 1, 1, 2, 2, 2, 1},
+        {1, 1, 1, 17, 1, 1, 2, 2, 2, 1},
+        {1, 1, 1, 17, 1, 1, 2, 2, 2, 1},
+        {1, 17, 0, 2, 66, 65, 2, 2, 2, 1}
     };
 
-    private GameObject[,,] buildingGameObjects = new GameObject[5, 6, 8];
+    private GameObject[,,] buildingGameObjects = new GameObject[5, 10, 8];
 
     ///Render building based on public building array.
     public void render(){

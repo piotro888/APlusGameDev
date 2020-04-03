@@ -4,8 +4,9 @@ using UnityEngine;
 public class BuildingController : MonoBehaviour
 {
     public BuildingRenderrer buildingRenderrer;
-    public int minInLine;
     public float frameLineShift = -2.0f;
+
+    int minInLine = 4;
 
     List <int> lines_to_delete = new List<int>();
     List <float> lines_to_shift = new List<float>();
