@@ -66,4 +66,17 @@ public class BuildingController : MonoBehaviour
         }
         return attachedElement;
     }
+
+    public int getYPosOfGameObject(GameObject gameObject, int x){
+        int y_pos = -1;
+        for(int i=0; i<buildingRenderrer.building.GetLength(0); i++){
+            for(int j=0; j<buildingRenderrer.gameObjects.Length; j++){
+                if(buildingRenderrer.buildingGameObjects[i, x, j] == gameObject){
+                    y_pos = i;
+                    break;
+                }
+            }
+        }
+        return y_pos;
+    }
 }
