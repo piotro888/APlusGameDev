@@ -577,7 +577,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf9dc6635beaaeaffb7a9ddedd2a5dd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bomb: {fileID: 1117513925114407524, guid: 566173e1598084ccdbf97bd91fd61859, type: 3}
+  bomb: {fileID: 651416851139205706, guid: 7c4eb2ffc03f3ee438025a03cb378405, type: 3}
 --- !u!1 &334109879
 GameObject:
   m_ObjectHideFlags: 0

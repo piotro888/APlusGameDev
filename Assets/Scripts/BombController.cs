@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.UI; // this line works fine
 using System.Diagnostics;
 
 public class BombController : MonoBehaviour
 {
+    public Slider progressBar;
+
     GameObject buildingGeneratorObject;
     BuildingRenderrer buildingRenderrer;
     BuildingController buildingController;
@@ -15,7 +18,6 @@ public class BombController : MonoBehaviour
         buildingRenderrer = buildingGeneratorObject.GetComponent<BuildingRenderrer>();
         buildingController = buildingGeneratorObject.GetComponent<BuildingController>();        
         attachedObject = buildingController.attachBomb(gameObject, x, y);
-        UnityEngine.Debug.Log(attachedObject);
         enabled = true;
         stopwatch.Start();
     }
@@ -43,6 +45,9 @@ public class BombController : MonoBehaviour
 
             buildingRenderrer.deleteBlock(y_attached_pos, x_pos);
             Destroy(gameObject);
+        } else {
+            float val = 1f - ( (float) stopwatch.ElapsedMilliseconds/3000);
+            progressBar.value = val;
         }
     }
 }
