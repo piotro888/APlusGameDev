@@ -19,9 +19,9 @@ public class BuildingRenderrer : MonoBehaviour
     public int[,] building = {
         {1, 1, 1, 17, 1, 1, 2, 2, 2, 1},
         {1, 1, 1, 17, 1, 1, 2, 2, 2, 1},
-        {1, 1, 1, 17, 1, 1, 2, 2, 2, 1},
-        {1, 1, 1, 17, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 17, 66, 65, 2, 0, 0, 0}
+        {1, 1+64, 1+64, 17+64, 1, 1, 2, 2, 2, 1},
+        {1, 1, 1, 17+64, 1, 1, 2, 2, 2, 1},
+        {1, 17, 0, 2, 66, 65, 2, 2, 2, 1}
     };
 
     public GameObject[,,] buildingGameObjects = new GameObject[5, 10, 8];
