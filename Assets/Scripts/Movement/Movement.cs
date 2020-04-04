@@ -15,28 +15,25 @@ public class Movement : MonoBehaviour {
 
     [Header ("Drabina")]
     public float velocity_ladder;
+    public bool isCollsionWithLadder = false;
 
+    Collider2D ladderObj;
 
-    void OnTriggerStay2D(Collider2D obj){
-       if(obj.gameObject.tag=="Ladder"){
-           pl.gravityScale=0.5f;
-           if (Input.GetKey(KeyCode.W)&&head.GetComponent<HeadCollider>().isLadder==true){
-                pl.velocity = new Vector2(0, velocity_ladder);
-                player.GetComponent<Collider2D>().isTrigger=true;
-               player.transform.position = new Vector2(obj.transform.position.x,player.transform.position.y);
-           }
-           else if (Input.GetKey(KeyCode.S)&&feet.GetComponent<FeetCollider>().isLadder==true){
-                pl.velocity = new Vector2(0, -(velocity_ladder/2));
-                player.GetComponent<Collider2D>().isTrigger=true;
-               player.transform.position = new Vector2(obj.transform.position.x,player.transform.position.y);
-           }
-           else {player.GetComponent<Collider2D>().isTrigger=false;
-           }
-            /*else if (Input.GetKey(KeyCode.S)){
-                pl.velocity = new Vector2(0, -velocity_ladder);
+    void OnTriggerEnter2D(Collider2D obj){
+        if(obj.gameObject.tag=="Ladder"){
+            ladderObj = obj;
+            isCollsionWithLadder = true;
+            Debug.Log("COL");
+        }
+    }
 
-            }*/
-       } 
+    void OnTriggerExit2D(Collider2D obj){
+        if(obj.gameObject.tag == "Ladder"){
+            player.GetComponent<Collider2D>().isTrigger=false;
+            if(obj == ladderObj) isCollsionWithLadder = false;
+            Debug.Log("EXIT");
+        }
+        Debug.Log("EXIT2");
     }
 
 
@@ -51,6 +48,23 @@ public class Movement : MonoBehaviour {
             {
                 pl.velocity = new Vector2(-velocity_player, pl.velocity.y);
                 pl.gravityScale=1f;
+            }
+
+            if(isCollsionWithLadder){
+                pl.gravityScale=0.5f;
+                if (Input.GetKey(KeyCode.W)&&head.GetComponent<HeadCollider>().isLadder==true){
+                        pl.velocity = new Vector2(0, velocity_ladder);
+                        player.GetComponent<Collider2D>().isTrigger=true;
+                        player.transform.position = new Vector2(ladderObj.transform.position.x,player.transform.position.y);
+                }
+                else if (Input.GetKey(KeyCode.S)&&feet.GetComponent<FeetCollider>().isLadder==true){
+                        pl.velocity = new Vector2(0, -(velocity_ladder/2));
+                        player.GetComponent<Collider2D>().isTrigger=true;
+                        player.transform.position = new Vector2(ladderObj.transform.position.x,player.transform.position.y);
+                }
+                else {
+                    player.GetComponent<Collider2D>().isTrigger=false;
+                }
             }
         
 
