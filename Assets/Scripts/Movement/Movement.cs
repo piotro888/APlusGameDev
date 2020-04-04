@@ -7,8 +7,6 @@ public class Movement : MonoBehaviour {
     [Header ("Poruszanie")]
     public Rigidbody2D pl;
     public float velocity_player;
-    public GameObject head;
-    public GameObject feet;
     public GameObject player;
     //private Animator animacja;
     //public Camera kamera;
@@ -22,6 +20,12 @@ public class Movement : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D obj){
         if(obj.gameObject.tag=="Ladder"){
             ladderObj = obj;
+            isCollsionWithLadder = true;
+        }
+    }
+
+    void OnTriggerStay2D(Collider2D obj){
+        if(obj.gameObject.tag=="Ladder"){
             isCollsionWithLadder = true;
         }
     }
@@ -49,12 +53,12 @@ public class Movement : MonoBehaviour {
 
             if(isCollsionWithLadder){
                 pl.gravityScale=0.5f;
-                if (Input.GetKey(KeyCode.W)&&head.GetComponent<HeadCollider>().isLadder==true){
+                if (Input.GetKey(KeyCode.W)){
                         pl.velocity = new Vector2(0, velocity_ladder);
                         player.GetComponent<Collider2D>().isTrigger=true;
                         player.transform.position = new Vector2(ladderObj.transform.position.x,player.transform.position.y);
                 }
-                else if (Input.GetKey(KeyCode.S)&&feet.GetComponent<FeetCollider>().isLadder==true){
+                else if (Input.GetKey(KeyCode.S)){
                         pl.velocity = new Vector2(0, -(velocity_ladder/2));
                         player.GetComponent<Collider2D>().isTrigger=true;
                         player.transform.position = new Vector2(ladderObj.transform.position.x,player.transform.position.y);
