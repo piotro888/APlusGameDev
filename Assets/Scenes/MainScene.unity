@@ -289,6 +289,11 @@ PrefabInstance:
       propertyPath: frameLineShift
       value: -2
       objectReference: {fileID: 0}
+    - target: {fileID: -6354623467762020129, guid: 8c2caaa2b26d2b26b9063c91c6c91e48,
+        type: 3}
+      propertyPath: tempBombGen
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1224297857737522107, guid: 8c2caaa2b26d2b26b9063c91c6c91e48,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2533,7 +2538,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1836990037}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 2, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2935,6 +2940,8 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+
     m_RemovedComponents:
     - {fileID: 947541712797242968, guid: 86ad2946ef05a7fd98f4314768ffe960, type: 3}
+
   m_SourcePrefab: {fileID: 100100000, guid: 86ad2946ef05a7fd98f4314768ffe960, type: 3}

@@ -24,7 +24,7 @@ public class BuildingRenderrer : MonoBehaviour
         {1, 17, 0, 2, 66, 65, 2, 2, 2, 1}
     };
 
-    private GameObject[,,] buildingGameObjects = new GameObject[5, 10, 8];
+    public GameObject[,,] buildingGameObjects = new GameObject[5, 10, 8];
 
     ///Render building based on public building array.
     public void render(){
