@@ -52,4 +52,29 @@ public class BuildingController : MonoBehaviour
             }
         }
     }
+
+    public GameObject attachBomb(GameObject bomb, int x, int y){
+        GameObject attachedElement = null;
+        for(int i=0; i<buildingRenderrer.gameObjects.Length; i++){
+            if(buildingRenderrer.buildingGameObjects[x, y, i] != null){
+                attachedElement = buildingRenderrer.buildingGameObjects[x, y, i];
+                bomb.transform.position = attachedElement.transform.position;
+                bomb.transform.SetParent(attachedElement.transform);
+            }
+        }
+        return attachedElement;
+    }
+
+    public int getYPosOfGameObject(GameObject gameObject, int x){
+        int y_pos = -1;
+        for(int i=0; i<buildingRenderrer.building.GetLength(0); i++){
+            for(int j=0; j<buildingRenderrer.gameObjects.Length; j++){
+                if(buildingRenderrer.buildingGameObjects[i, x, j] == gameObject){
+                    y_pos = i;
+                    break;
+                }
+            }
+        }
+        return y_pos;
+    }
 }
