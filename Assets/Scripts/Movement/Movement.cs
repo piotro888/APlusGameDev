@@ -23,7 +23,6 @@ public class Movement : MonoBehaviour {
         if(obj.gameObject.tag=="Ladder"){
             ladderObj = obj;
             isCollsionWithLadder = true;
-            Debug.Log("COL");
         }
     }
 
@@ -31,9 +30,7 @@ public class Movement : MonoBehaviour {
         if(obj.gameObject.tag == "Ladder"){
             player.GetComponent<Collider2D>().isTrigger=false;
             if(obj == ladderObj) isCollsionWithLadder = false;
-            Debug.Log("EXIT");
         }
-        Debug.Log("EXIT2");
     }
 
 
