@@ -293,7 +293,7 @@ PrefabInstance:
         type: 3}
       propertyPath: tempBombGen
       value: 
-      objectReference: {fileID: 286505214}
+      objectReference: {fileID: 0}
     - target: {fileID: 1224297857737522107, guid: 8c2caaa2b26d2b26b9063c91c6c91e48,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -559,25 +559,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 236584170}
   m_CullTransparentMesh: 0
---- !u!1 &286505210 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4162120510605347153, guid: 8c2caaa2b26d2b26b9063c91c6c91e48,
-    type: 3}
-  m_PrefabInstance: {fileID: 227425924}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &286505214
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 286505210}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf9dc6635beaaeaffb7a9ddedd2a5dd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bomb: {fileID: 651416851139205706, guid: 7c4eb2ffc03f3ee438025a03cb378405, type: 3}
 --- !u!1 &334109879
 GameObject:
   m_ObjectHideFlags: 0

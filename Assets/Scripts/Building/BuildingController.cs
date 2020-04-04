@@ -4,7 +4,6 @@ using UnityEngine;
 public class BuildingController : MonoBehaviour
 {
     public BuildingRenderrer buildingRenderrer;
-    public TempBombGen tempBombGen;
     public float frameLineShift = -2.0f;
 
     int minInLine = 4;
@@ -14,7 +13,6 @@ public class BuildingController : MonoBehaviour
 
     void Start(){
         buildingRenderrer.render(); //render building on start
-        tempBombGen.Spawn();
     }
 
     public bool checkIfLineValid(int line){
