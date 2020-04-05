@@ -14,18 +14,17 @@ public class BuildingRenderrer : MonoBehaviour
         16-Player ladder
         32-Reinforcement
         64-Platform
-        128-Empty
         (Bitmask)
     */
     public int[,] building = {
-        {1, 1, 1, 17, 1, 128, 128, 128, 2, 1},
+        {1, 1, 1, 17, 1, 0, 0, 0, 2, 1},
         {1, 1, 1, 17, 1, 1, 2, 2, 2, 1},
         {1, 1+64, 1+64, 17+64, 1, 1, 2, 2, 2, 1},
         {1, 1, 1, 17+64, 1, 1, 2, 2, 2, 1},
-        {1, 17, 0, 2, 66, 65, 2, 2, 2, 1}
+        {1, 17, 1, 2, 66, 65, 2, 2, 2, 1}
     };
-
     public GameObject[,,] buildingGameObjects = new GameObject[5, 10, 8];
+    public GameObject[,] emptyGameObjects = new GameObject[5, 10];
 
     public int buildingHeight;
 
@@ -38,6 +37,7 @@ public class BuildingRenderrer : MonoBehaviour
         for(int i=0; i<building.GetLength(0); i++){
             for(int j=0; j<building.GetLength(1); j++){
                 int num = building[i,j];
+                addEmpty(i, j);
                 for(int k=0; k<gameObjects.Length; k++){
                     if((num & (1<<k)) != 0){
                         addElement(k, i, j, true);
@@ -58,13 +58,28 @@ public class BuildingRenderrer : MonoBehaviour
         }
     }
 
+    void addEmpty(int x, int y){
+            Vector3 blockPosition = transform.position + new Vector3(y, x, 0);
+            emptyGameObjects[x,y] =  (GameObject) Instantiate(
+                gameObjects[7],
+                blockPosition,
+                Quaternion.identity);
+    }
+
     public void deleteBlock(int x, int y){
-        for(int i=0; i<gameObjects.Length; i++){
+        for(int i=0; i<gameObjects.Length-1; i++){
             if((building[x,y] & (1<<i)) != 0){
                 deleteElement(i, x, y);
             }
         }
         building[x, y] = 0;
+    }
+
+    public void deleteEmpty(int x, int y){
+        if(emptyGameObjects[x, y]!=null){
+            Destroy(emptyGameObjects[x, y]);
+            emptyGameObjects[x, y]=null;
+        }
     }
 
     public void deleteElement(int id, int x, int y){
@@ -74,7 +89,7 @@ public class BuildingRenderrer : MonoBehaviour
     }
 
     public void moveBlock(int x, int y, float shift){
-        for(int i=0; i<gameObjects.Length; i++){
+        for(int i=0; i<gameObjects.Length-1; i++){
             if((building[x,y] & (1<<i)) != 0){
                 buildingGameObjects[x, y, i].transform.position += new Vector3(0, shift, 0); 
             }
@@ -84,7 +99,7 @@ public class BuildingRenderrer : MonoBehaviour
     public void roundPos(int fromLine){
         for(int i=fromLine; i<building.GetLength(0); i++){
             for(int j=0; j<building.GetLength(1); j++){
-                for(int k=0; k<gameObjects.Length; k++){
+                for(int k=0; k<gameObjects.Length-1; k++){
                     if((building[i,j] & (1<<k)) != 0){
                         if(buildingGameObjects[i, j, k].transform.position.y - i < 0.02f ){
                             buildingGameObjects[i, j, k].transform.position = new Vector3(
