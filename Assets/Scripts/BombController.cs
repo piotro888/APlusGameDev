@@ -29,27 +29,61 @@ public class BombController : MonoBehaviour
             int x_pos = (int)Mathf.Floor(transform.position.x) - (int) Mathf.Floor(buildingGeneratorObject.transform.position.x);
             int y_attached_pos = buildingController.getYPosOfGameObject(attachedObject, x_pos);
 
-            buildingRenderrer.deleteBlock(y_attached_pos+1, x_pos);
-            buildingRenderrer.deleteBlock(y_attached_pos-1, x_pos);
-            buildingRenderrer.deleteBlock(y_attached_pos, x_pos+1);
-            buildingRenderrer.deleteBlock(y_attached_pos, x_pos-1);
+            if(y_attached_pos+1 < buildingRenderrer.building.GetLength(0)){
+                if(buildingController.isReinforcedObject(y_attached_pos+1, x_pos))
+                    buildingRenderrer.deleteElement(5, y_attached_pos+1, x_pos);
+                else {
+                    buildingRenderrer.deleteBlock(y_attached_pos+1, x_pos);
+                    buildingRenderrer.addElement(7, y_attached_pos+1, x_pos, false);
+                }
+            }
 
-            buildingRenderrer.addElement(7, y_attached_pos+1, x_pos, false);
-            buildingRenderrer.addElement(7, y_attached_pos-1, x_pos, false);
-            buildingRenderrer.addElement(7, y_attached_pos, x_pos+1, false);
-            buildingRenderrer.addElement(7, y_attached_pos, x_pos-1, false);
+            if(y_attached_pos-1 >= 0){
+                if(buildingController.isReinforcedObject(y_attached_pos-1, x_pos))
+                    buildingRenderrer.deleteElement(5, y_attached_pos-1, x_pos);
+                else {
+                    buildingRenderrer.deleteBlock(y_attached_pos-1, x_pos);
+                    buildingRenderrer.addElement(7, y_attached_pos-1, x_pos, false);
+                }
+            }
+
+            if(x_pos+1 < buildingRenderrer.building.GetLength(1)){
+                if(buildingController.isReinforcedObject(y_attached_pos, x_pos+1))
+                    buildingRenderrer.deleteElement(5, y_attached_pos, x_pos+1);
+                else {
+                    buildingRenderrer.deleteBlock(y_attached_pos, x_pos+1);
+                    buildingRenderrer.addElement(7, y_attached_pos, x_pos+1, false);
+                }
+            }
+
+            if(x_pos-1 >= 0){
+                if(buildingController.isReinforcedObject(y_attached_pos, x_pos-1))
+                    buildingRenderrer.deleteElement(5, y_attached_pos, x_pos-1);
+                else{
+                    buildingRenderrer.deleteBlock(y_attached_pos, x_pos-1);
+                    buildingRenderrer.addElement(7, y_attached_pos, x_pos-1, false);
+                }
+            }
 
             int delete_line_offset = -1;
             for(int i=0; i<3; i++){
-                if(buildingController.checkIfLineValid(y_attached_pos - delete_line_offset)){
-                   delete_line_offset++; 
+                if(y_attached_pos - delete_line_offset < 0 ||
+                    y_attached_pos - delete_line_offset >= buildingRenderrer.building.GetLength(0) ||
+                    buildingController.checkIfLineValid(y_attached_pos - delete_line_offset)){
+                    delete_line_offset++; 
                 } else {
                     buildingController.destroyLine(y_attached_pos - delete_line_offset);
                 }
             }
 
-            buildingRenderrer.deleteBlock(y_attached_pos, x_pos);
+            if(buildingController.isReinforcedObject(y_attached_pos, x_pos)){
+                buildingRenderrer.deleteElement(5, y_attached_pos, x_pos);
+            } else {
+                buildingRenderrer.deleteBlock(y_attached_pos, x_pos);
+                buildingRenderrer.addElement(7, y_attached_pos, x_pos, false);
+            }
             Destroy(gameObject);
+
         } else {
             float val = 1f - ( (float) stopwatch.ElapsedMilliseconds/3000);
             progressBar.value = val;

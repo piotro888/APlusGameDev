@@ -33,6 +33,8 @@ public class BuildingController : MonoBehaviour
         buildingRenderrer.shiftArrayVertical(l);
         lines_to_delete.Add(l);
         lines_to_shift.Add(1);
+
+        buildingRenderrer.buildingHeight--;
     }
 
     void FixedUpdate(){
