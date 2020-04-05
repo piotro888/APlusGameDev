@@ -37,7 +37,7 @@ public class BombSpawner : MonoBehaviour
 
                 spawn_y = random.Next(0, buildingRenderrer.buildingHeight);
                 spawn_x = random.Next(0, buildingRenderrer.building.GetLength(1));
-            } while(buildingController.isEmptyObject(spawn_y, spawn_x));
+            } while(!buildingController.isSolidObject(spawn_y, spawn_x));
 
             GameObject spawn_bomb = Instantiate(bomb, new Vector3(spawn_x, spawn_y, 0), Quaternion.identity);
             spawn_bomb.GetComponent<BombController>().init(spawn_y, spawn_x);

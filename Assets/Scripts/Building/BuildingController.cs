@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class BuildingController : MonoBehaviour
@@ -18,7 +19,7 @@ public class BuildingController : MonoBehaviour
     public bool checkIfLineValid(int line){
         int count = 0;
         for(int i=0; i<buildingRenderrer.building.GetLength(1); i++){
-            if(buildingRenderrer.building[line, i] != 0)
+            if(buildingRenderrer.building[line, i] != 0 && buildingRenderrer.building[line, i] != 128)
                 count++;
         }
         return (count >= minInLine ? true : false);
@@ -26,7 +27,9 @@ public class BuildingController : MonoBehaviour
 
     public void destroyLine(int l){
         //destroy elements first
+        bool linex = false;
         for(int i=0; i<buildingRenderrer.building.GetLength(1); i++){
+            if(buildingRenderrer.building[l, i] != 0) linex=true;
             buildingRenderrer.deleteBlock(l, i);
         }
 
@@ -34,7 +37,11 @@ public class BuildingController : MonoBehaviour
         lines_to_delete.Add(l);
         lines_to_shift.Add(1);
 
-        buildingRenderrer.buildingHeight--;
+        if(linex){
+            buildingRenderrer.buildingHeight--;
+            for(int i=0; i<buildingRenderrer.building.GetLength(1); i++)
+                buildingRenderrer.deleteEmpty(buildingRenderrer.buildingHeight, i);
+        }
     }
 
     void FixedUpdate(){
@@ -57,7 +64,7 @@ public class BuildingController : MonoBehaviour
 
     public GameObject attachBomb(GameObject bomb, int x, int y){
         GameObject attachedElement = null;
-        for(int i=0; i<buildingRenderrer.gameObjects.Length; i++){
+        for(int i=0; i<buildingRenderrer.gameObjects.Length-1; i++){
             if(buildingRenderrer.buildingGameObjects[x, y, i] != null){
                 attachedElement = buildingRenderrer.buildingGameObjects[x, y, i];
                 bomb.transform.position = attachedElement.transform.position;
@@ -70,7 +77,7 @@ public class BuildingController : MonoBehaviour
     public int getYPosOfGameObject(GameObject gameObject, int x){
         int y_pos = -1;
         for(int i=0; i<buildingRenderrer.building.GetLength(0); i++){
-            for(int j=0; j<buildingRenderrer.gameObjects.Length; j++){
+            for(int j=0; j<buildingRenderrer.gameObjects.Length-1; j++){
                 if(buildingRenderrer.buildingGameObjects[i, x, j] == gameObject){
                     y_pos = i;
                     break;
@@ -81,7 +88,7 @@ public class BuildingController : MonoBehaviour
     }
 
     public bool isEmptyObject(int x, int y){
-        return buildingRenderrer.building[x,y] == (1<<7);
+        return buildingRenderrer.emptyGameObjects[x, y] != null;
     }
 
     public bool isReinforcedObject(int x, int y){
