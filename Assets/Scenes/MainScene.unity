@@ -670,7 +670,7 @@ GameObject:
   - component: {fileID: 357320066}
   - component: {fileID: 357320068}
   - component: {fileID: 357320067}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: mid
   m_TagString: Untagged
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
@@ -1781,7 +1781,7 @@ GameObject:
   - component: {fileID: 1556244181}
   - component: {fileID: 1556244180}
   - component: {fileID: 1556244179}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
