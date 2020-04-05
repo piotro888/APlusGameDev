@@ -7,6 +7,8 @@ TagManager:
   - Ladder
   - EndLadder
   - Ground
+  - Unbreakable
+  - Box
   layers:
   - Default
   - TransparentFX
@@ -19,7 +21,7 @@ TagManager:
   - FG
   - Building
   - BG - BG
-  - 
+  - Box
   - 
   - 
   - 
@@ -49,6 +51,9 @@ TagManager:
     locked: 0
   - name: Building
     uniqueID: 1992741229
+    locked: 0
+  - name: Box
+    uniqueID: 3317099037
     locked: 0
   - name: FG
     uniqueID: 82006345
