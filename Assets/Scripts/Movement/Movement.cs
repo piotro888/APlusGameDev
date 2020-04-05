@@ -101,6 +101,14 @@ public class Movement : MonoBehaviour {
         
     }
 
+    public int getLadders(){
+        return Ladders;
+    }
+
+    public int getConstructionElements(){
+        return ContructionElements;
+    }
+
     /*private void OnTriggerEnter2D(Collider2D obj)
     {
         if (obj.gameObject.tag == "przeciwnik")
