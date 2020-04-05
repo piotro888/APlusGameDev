@@ -15,12 +15,22 @@ public class Movement : MonoBehaviour {
     public float velocity_ladder;
     public bool isCollsionWithLadder = false;
 
+    [Header ("Ekwipunek")]
+    public int Ladders;
+    public int ContructionElements;
+
     Collider2D ladderObj;
 
     void OnTriggerEnter2D(Collider2D obj){
         if(obj.gameObject.tag=="Ladder"){
             ladderObj = obj;
             isCollsionWithLadder = true;
+        }
+        if(obj.gameObject.tag=="Box"){
+            Ladders+=obj.GetComponent<InBox>().count_Ladders;
+            ContructionElements+=obj.GetComponent<InBox>().count_ConstructionElements;
+            Destroy(obj.gameObject);
+            Debug.Log("drabiny: " + Ladders + " i elementy budowy: " + ContructionElements);
         }
     }
 
@@ -89,6 +99,14 @@ public class Movement : MonoBehaviour {
             animacja.SetBool("woda", jestWoda);
         }*/
         
+    }
+
+    public int getLadders(){
+        return Ladders;
+    }
+
+    public int getConstructionElements(){
+        return ContructionElements;
     }
 
     /*private void OnTriggerEnter2D(Collider2D obj)
