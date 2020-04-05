@@ -14,10 +14,11 @@ public class BuildingRenderrer : MonoBehaviour
         16-Player ladder
         32-Reinforcement
         64-Platform
+        128-Empty
         (Bitmask)
     */
     public int[,] building = {
-        {1, 1, 1, 17, 1, 1, 2, 2, 2, 1},
+        {1, 1, 1, 17, 1, 128, 128, 128, 2, 1},
         {1, 1, 1, 17, 1, 1, 2, 2, 2, 1},
         {1, 1+64, 1+64, 17+64, 1, 1, 2, 2, 2, 1},
         {1, 1, 1, 17+64, 1, 1, 2, 2, 2, 1},
@@ -33,19 +34,22 @@ public class BuildingRenderrer : MonoBehaviour
                 int num = building[i,j];
                 for(int k=0; k<gameObjects.Length; k++){
                     if((num & (1<<k)) != 0){
-                        addElement(k, i, j);
+                        addElement(k, i, j, true);
                     }
                 }
             }
         }
     }
 
-    public void addElement(int id, int x, int y){
-        Vector3 blockPosition = transform.position + new Vector3(y, x, 0);
-        buildingGameObjects[x,y,id] =  (GameObject) Instantiate(
-            gameObjects[id],
-            blockPosition,
-            Quaternion.identity);
+    public void addElement(int id, int x, int y, bool disable_check){
+        if(((building[x, y] & (1<<id)) == 0) || disable_check){
+            building[x,y] |= (1<<id);
+            Vector3 blockPosition = transform.position + new Vector3(y, x, 0);
+            buildingGameObjects[x,y,id] =  (GameObject) Instantiate(
+                gameObjects[id],
+                blockPosition,
+                Quaternion.identity);
+        }
     }
 
     public void deleteBlock(int x, int y){

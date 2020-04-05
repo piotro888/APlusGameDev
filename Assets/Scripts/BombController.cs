@@ -34,6 +34,11 @@ public class BombController : MonoBehaviour
             buildingRenderrer.deleteBlock(y_attached_pos, x_pos+1);
             buildingRenderrer.deleteBlock(y_attached_pos, x_pos-1);
 
+            buildingRenderrer.addElement(7, y_attached_pos+1, x_pos, false);
+            buildingRenderrer.addElement(7, y_attached_pos-1, x_pos, false);
+            buildingRenderrer.addElement(7, y_attached_pos, x_pos+1, false);
+            buildingRenderrer.addElement(7, y_attached_pos, x_pos-1, false);
+
             int delete_line_offset = -1;
             for(int i=0; i<3; i++){
                 if(buildingController.checkIfLineValid(y_attached_pos - delete_line_offset)){

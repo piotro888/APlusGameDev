@@ -77,4 +77,18 @@ public class BuildingController : MonoBehaviour
         }
         return y_pos;
     }
+
+    public bool isEmptyObject(int x, int y){
+        return buildingRenderrer.building[x,y] == (1<<7);
+    }
+
+    public bool isReinforcedObject(int x, int y){
+        return (buildingRenderrer.building[x,y] & (1<<5)) != 0;
+    }
+
+    public bool isSolidObject(int x, int y){
+        return ((buildingRenderrer.building[x,y] & (1<<0)) != 0) ||
+                ((buildingRenderrer.building[x,y] & (1<<1)) != 0) ||
+                ((buildingRenderrer.building[x,y] & (1<<2)) != 0);
+    }
 }
