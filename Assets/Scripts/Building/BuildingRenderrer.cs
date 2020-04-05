@@ -14,10 +14,11 @@ public class BuildingRenderrer : MonoBehaviour
         16-Player ladder
         32-Reinforcement
         64-Platform
+        128-Empty
         (Bitmask)
     */
     public int[,] building = {
-        {1, 1, 1, 17, 1, 1, 2, 2, 2, 1},
+        {1, 1, 1, 17, 1, 128, 128, 128, 2, 1},
         {1, 1, 1, 17, 1, 1, 2, 2, 2, 1},
         {1, 1+64, 1+64, 17+64, 1, 1, 2, 2, 2, 1},
         {1, 1, 1, 17+64, 1, 1, 2, 2, 2, 1},
