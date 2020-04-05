@@ -27,6 +27,12 @@ public class BuildingRenderrer : MonoBehaviour
 
     public GameObject[,,] buildingGameObjects = new GameObject[5, 10, 8];
 
+    public int buildingHeight;
+
+    void Start(){
+        buildingHeight = building.GetLength(0);
+    }
+
     ///Render building based on public building array.
     public void render(){
         for(int i=0; i<building.GetLength(0); i++){
