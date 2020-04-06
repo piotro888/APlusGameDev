@@ -4,95 +4,96 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour {
 
-   
 
-    [Header ("Poruszanie")]
-    
+
+    [Header("Poruszanie")]
+
     public Rigidbody2D pl;
     public float velocity_player;
     public GameObject player;
     public Animator anim;
     public float size_x, size_y;
     //public Camera kamera;
-    bool czy_chodzi;
-    [Header ("Drabina")]
+    bool czy_chodzi, czy_drabina;
+    [Header("Drabina")]
     public AudioSource cos;
     public AudioSource podnoszenie;
+    public AudioSource drabina;
     public float velocity_ladder;
     public bool isCollsionWithLadder = false;
 
-    [Header ("Ekwipunek")]
+    [Header("Ekwipunek")]
     public int Ladders;
     public int ContructionElements;
- 
+
     Collider2D ladderObj;
 
-    void OnTriggerEnter2D(Collider2D obj){
-        if(obj.gameObject.tag=="Ladder"){
+    void OnTriggerEnter2D(Collider2D obj) {
+        if (obj.gameObject.tag == "Ladder") {
             ladderObj = obj;
             isCollsionWithLadder = true;
         }
-        if(obj.gameObject.tag=="Box"){
+        if (obj.gameObject.tag == "Box") {
             Debug.Log("zde");
-            Ladders+=obj.GetComponent<InBox>().count_Ladders;
-            ContructionElements+=obj.GetComponent<InBox>().count_ConstructionElements;
+            Ladders += obj.GetComponent<InBox>().count_Ladders;
+            ContructionElements += obj.GetComponent<InBox>().count_ConstructionElements;
             Destroy(obj.gameObject);
             Debug.Log("drabiny: " + Ladders + " i elementy budowy: " + ContructionElements);
             podnoszenie.Play();
         }
     }
 
-    void OnTriggerStay2D(Collider2D obj){
-        if(obj.gameObject.tag=="Ladder"){
+    void OnTriggerStay2D(Collider2D obj) {
+        if (obj.gameObject.tag == "Ladder") {
             isCollsionWithLadder = true;
         }
     }
 
-    void OnTriggerExit2D(Collider2D obj){
-        if(obj.gameObject.tag == "Ladder"){
-            player.GetComponent<Collider2D>().isTrigger=false;
-            if(obj == ladderObj) isCollsionWithLadder = false;
+    void OnTriggerExit2D(Collider2D obj) {
+        if (obj.gameObject.tag == "Ladder") {
+            player.GetComponent<Collider2D>().isTrigger = false;
+            if (obj == ladderObj) isCollsionWithLadder = false;
         }
     }
 
 
-    void Update () {
+    void Update() {
         //kamera.transform.position = new Vector3(player.transform.position.x,player.transform.position.y,-10f);
-        anim.SetFloat ("animacjapor",Mathf.Abs(pl.velocity.x));
-        anim.SetFloat ("animacjaskok",Mathf.Abs(pl.velocity.y));
+        anim.SetFloat("animacjapor", Mathf.Abs(pl.velocity.x));
+        anim.SetFloat("animacjaskok", Mathf.Abs(pl.velocity.y));
 
-            if(isCollsionWithLadder){
-                pl.gravityScale=0.5f;
-                if (Input.GetKey(KeyCode.W)){
-                        pl.velocity = new Vector2(0, velocity_ladder);
-                        player.GetComponent<Collider2D>().isTrigger=true;
-                        player.transform.position = new Vector2(ladderObj.transform.position.x,player.transform.position.y);
-                }
-                else if (Input.GetKey(KeyCode.S)){
-                        pl.velocity = new Vector2(0, -(velocity_ladder/2));
-                        player.GetComponent<Collider2D>().isTrigger=true;
-                        player.transform.position = new Vector2(ladderObj.transform.position.x,player.transform.position.y);
-                }
-                else {
-                    player.GetComponent<Collider2D>().isTrigger=false;
-                }
+        if (isCollsionWithLadder) {
+            pl.gravityScale = 0.5f;
+            if (Input.GetKey(KeyCode.W)) {
+                pl.velocity = new Vector2(0, velocity_ladder);
+                player.GetComponent<Collider2D>().isTrigger = true;
+                player.transform.position = new Vector2(ladderObj.transform.position.x, player.transform.position.y);
             }
-
-            if(isCollsionWithLadder==true) anim.SetBool("LadderOn",true);
-            else anim.SetBool("LadderOn",false);
-
-            if (Input.GetKey(KeyCode.D))
-            {
-                pl.velocity = new Vector2(velocity_player, pl.velocity.y);
-                player.transform.localScale= new Vector2(size_x,size_y);
-                pl.gravityScale=1f;
+            else if (Input.GetKey(KeyCode.S)) {
+                pl.velocity = new Vector2(0, -(velocity_ladder / 2));
+                player.GetComponent<Collider2D>().isTrigger = true;
+                player.transform.position = new Vector2(ladderObj.transform.position.x, player.transform.position.y);
+            }
+            else {
+                player.GetComponent<Collider2D>().isTrigger = false;
+            }
         }
 
-            if (Input.GetKey(KeyCode.A))
-            {
-                pl.velocity = new Vector2(-velocity_player, pl.velocity.y);
-                player.transform.localScale= new Vector2(-size_x,size_y);
-                pl.gravityScale=1f;
+        if (isCollsionWithLadder == true) anim.SetBool("LadderOn", true);
+        else anim.SetBool("LadderOn", false);
+
+        if (Input.GetKey(KeyCode.D))
+        {
+            pl.velocity = new Vector2(velocity_player, pl.velocity.y);
+            player.transform.localScale = new Vector2(size_x, size_y);
+            pl.gravityScale = 1f;
+        }
+
+        if (Input.GetKey(KeyCode.A))
+        {
+            pl.velocity = new Vector2(-velocity_player, pl.velocity.y);
+            player.transform.localScale = new Vector2(-size_x, size_y);
+            pl.gravityScale = 1f;
         }
 
         if (pl.velocity.x != 0)
@@ -108,9 +109,24 @@ public class Movement : MonoBehaviour {
         else
             cos.Stop();
 
+        if (pl.velocity.y != 0 && (Input.GetKey(KeyCode.W) || (Input.GetKey(KeyCode.S))))
+            czy_drabina = true;
+        else
+            czy_drabina = false;
+
+        if (czy_drabina)
+        {
+            if (!drabina.isPlaying)
+                drabina.Play();
+        }
+        else
+            drabina.Stop();
+
+
+
         //roznica = Mathf.Abs(stanPrzed - pl.position.x);
 
-        
+
         /*if (jestDrabina == true)
         {
             pl.gravityScale = 1f;
@@ -127,7 +143,7 @@ public class Movement : MonoBehaviour {
             animacja.SetBool("skok", dotyka);
             animacja.SetBool("woda", jestWoda);
         }*/
-        
+
     }
 
     public int getLadders(){
