@@ -40,7 +40,7 @@ public class TimerControl : MonoBehaviour
     public void EndMenu(bool win){
         stopwatch.Stop();
         //buildingGen.enabled = false;
-        //Time.timeScale=0;
+        buildingGen.gameObject.SetActive(false);
         if(win==true) end_Text.text= "You Won!";
         else end_Text.text = "Przegrales Synu !!!";
         score_Text.text = "Score: " + calcScore();
