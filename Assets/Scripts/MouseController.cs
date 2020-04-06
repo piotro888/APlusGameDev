@@ -7,6 +7,7 @@ public class MouseController : MonoBehaviour
     public GameObject hlOK;
     public GameObject hlWA;
     public GameObject player;
+    public AudioSource blok;
 
     GameObject lastObj;
     BuildingController buildingController;
@@ -36,6 +37,7 @@ public class MouseController : MonoBehaviour
                     buildingRenderrer.addElement(5, y_array_pos, x_array_pos, false);
                 }
             }
+            blok.Play();
         }
 
         if(Input.GetMouseButtonDown(1) && hit.collider != null){
@@ -47,6 +49,7 @@ public class MouseController : MonoBehaviour
                     buildingRenderrer.addElement(4, y_array_pos, x_array_pos, false);
                 }
             }
+            blok.Play();
         }
 
         if(hit.collider != null) {

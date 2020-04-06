@@ -6,6 +6,7 @@ public class BuildingController : MonoBehaviour
 {
     public BuildingRenderrer buildingRenderrer;
     public float frameLineShift = -2.0f;
+    public AudioSource zawalenie;
 
     int minInLine = 4;
 
@@ -42,6 +43,7 @@ public class BuildingController : MonoBehaviour
             for(int i=0; i<buildingRenderrer.building.GetLength(1); i++)
                 buildingRenderrer.deleteEmpty(buildingRenderrer.buildingHeight, i);
         }
+        zawalenie.Play();
     }
 
     void FixedUpdate(){

@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   progressBar: {fileID: 6756051942763193046}
+  bomba: {fileID: 7262218040296651426, guid: 28d2027fdcb826043a88bc1959490369, type: 3}
 --- !u!1 &3465785701388035952
 GameObject:
   m_ObjectHideFlags: 0
