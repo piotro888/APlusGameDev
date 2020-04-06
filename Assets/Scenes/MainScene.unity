@@ -370,7 +370,7 @@ PrefabInstance:
         type: 3}
       propertyPath: gameObjects.Array.data[2]
       value: 
-      objectReference: {fileID: 3759642490535193536, guid: bbb9aaa70ca02055e8e8b12179baeaf9,
+      objectReference: {fileID: 7209423873597600825, guid: 2d22a9b9e05e8d7f88a748ffcd548638,
         type: 3}
     - target: {fileID: 1319150320159782499, guid: 8c2caaa2b26d2b26b9063c91c6c91e48,
         type: 3}
@@ -400,7 +400,7 @@ PrefabInstance:
         type: 3}
       propertyPath: gameObjects.Array.data[7]
       value: 
-      objectReference: {fileID: 2961809745010949377, guid: c0dc559b94974447c8d309b3d0cb5267,
+      objectReference: {fileID: 1185769784624854938, guid: 647930a26252945a5b83a9a1200f03ed,
         type: 3}
     - target: {fileID: 4162120510605347153, guid: 8c2caaa2b26d2b26b9063c91c6c91e48,
         type: 3}
@@ -4333,6 +4333,7 @@ GameObject:
   - component: {fileID: 1656242861}
   - component: {fileID: 1656242860}
   - component: {fileID: 1656242859}
+  - component: {fileID: 1656242863}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -4432,6 +4433,32 @@ RectTransform:
   m_AnchoredPosition: {x: 0.231, y: 2.131}
   m_SizeDelta: {x: 20, y: 14.261}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!61 &1656242863
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1656242858}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1690396638
 GameObject:
   m_ObjectHideFlags: 0
