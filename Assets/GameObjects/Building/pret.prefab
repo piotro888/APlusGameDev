@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5701960241030082040}
   - component: {fileID: 3757198988112325099}
   - component: {fileID: 8715675497743822395}
+  - component: {fileID: 4469283613182503080}
   m_Layer: 9
   m_Name: pret
   m_TagString: Untagged
@@ -108,3 +109,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.16}
   m_EdgeRadius: 0
+--- !u!114 &4469283613182503080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185769784624854938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abba178176b9ebfd69aecced6d04773a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: 418f742054f49941a8725c23ae79ac93, type: 3}
+  - {fileID: 21300000, guid: 804199952885aa2e18b3e96a01438120, type: 3}
