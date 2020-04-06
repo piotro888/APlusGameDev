@@ -19,6 +19,14 @@ public class MenuGłowne : MonoBehaviour
         Debug.Log("aplikacja się zamknęła ale w edytorze nie widać");
     }
 
+    public void tworcy(){
+        Application.LoadLevel("Authors");
+    }
+
+    public void menu(){
+        Application.LoadLevel("StartMenu");
+    }
+
 
 }
 
