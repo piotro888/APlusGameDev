@@ -862,8 +862,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 357320066}
-  - component: {fileID: 357320068}
   - component: {fileID: 357320067}
+  - component: {fileID: 357320068}
   m_Layer: 2
   m_Name: mid
   m_TagString: Untagged
@@ -909,8 +909,8 @@ MonoBehaviour:
   isCollsionWithLadder: 0
   Ladders: 0
   ContructionElements: 0
---- !u!58 &357320068
-CircleCollider2D:
+--- !u!61 &357320068
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -922,9 +922,19 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0993073, y: -0.03914848}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.2
+  m_Size: {x: 2.1122515, y: 1.6578844}
+  m_EdgeRadius: 0
 --- !u!1 &363600857
 GameObject:
   m_ObjectHideFlags: 0
@@ -5201,7 +5211,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.028}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1976590368
@@ -5237,7 +5247,7 @@ MonoBehaviour:
   buildingGen: {fileID: 282889840}
   end_Text: {fileID: 1033816285}
   score_Text: {fileID: 1816227863}
-  endTime: 1
+  endTime: 120
   EndGame: {fileID: 1464536526}
 --- !u!1 &2050801844
 GameObject:

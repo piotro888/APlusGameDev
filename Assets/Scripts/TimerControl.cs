@@ -25,7 +25,7 @@ public class TimerControl : MonoBehaviour
         fpsText.text = Mathf.Ceil(1.0f / Time.smoothDeltaTime) + " FPS";
         string secstring = String.Format("{0:00}", (endTime - elapsedSeconds)%60);
         timerText.text = (endTime - elapsedSeconds)/60 + ":" + secstring;
-        //if((endTime - elapsedSeconds)<=0) EndMenu(true);
+        if((endTime - elapsedSeconds)<=0) EndMenu(true);
         if( buildingGen.GetComponent<BuildingRenderrer>().buildingHeight==0) EndMenu(false);
         scoreText.text = ""+calcScore();
     }
