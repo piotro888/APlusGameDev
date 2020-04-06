@@ -8,7 +8,8 @@ public class Movement : MonoBehaviour {
     public Rigidbody2D pl;
     public float velocity_player;
     public GameObject player;
-    //private Animator animacja;
+    public Animator anim;
+    public float size_x, size_y;
     //public Camera kamera;
 
     [Header ("Drabina")]
@@ -27,6 +28,7 @@ public class Movement : MonoBehaviour {
             isCollsionWithLadder = true;
         }
         if(obj.gameObject.tag=="Box"){
+            Debug.Log("zde");
             Ladders+=obj.GetComponent<InBox>().count_Ladders;
             ContructionElements+=obj.GetComponent<InBox>().count_ConstructionElements;
             Destroy(obj.gameObject);
@@ -50,16 +52,8 @@ public class Movement : MonoBehaviour {
 
     void Update () {
         //kamera.transform.position = new Vector3(player.transform.position.x,player.transform.position.y,-10f);
-            if (Input.GetKey(KeyCode.D))
-            {
-                pl.velocity = new Vector2(velocity_player, pl.velocity.y);
-                pl.gravityScale=1f;
-            }
-            if (Input.GetKey(KeyCode.A))
-            {
-                pl.velocity = new Vector2(-velocity_player, pl.velocity.y);
-                pl.gravityScale=1f;
-            }
+        anim.SetFloat ("animacjapor",Mathf.Abs(pl.velocity.x));
+        anim.SetFloat ("animacjaskok",Mathf.Abs(pl.velocity.y));
 
             if(isCollsionWithLadder){
                 pl.gravityScale=0.5f;
@@ -76,6 +70,22 @@ public class Movement : MonoBehaviour {
                 else {
                     player.GetComponent<Collider2D>().isTrigger=false;
                 }
+            }
+
+            if(isCollsionWithLadder==true) anim.SetBool("LadderOn",true);
+            else anim.SetBool("LadderOn",false);
+
+                if (Input.GetKey(KeyCode.D))
+            {
+                pl.velocity = new Vector2(velocity_player, pl.velocity.y);
+                player.transform.localScale= new Vector2(size_x,size_y);
+                pl.gravityScale=1f;
+            }
+            if (Input.GetKey(KeyCode.A))
+            {
+                pl.velocity = new Vector2(-velocity_player, pl.velocity.y);
+                player.transform.localScale= new Vector2(-size_x,size_y);
+                pl.gravityScale=1f;
             }
         
 
