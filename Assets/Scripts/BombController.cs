@@ -83,7 +83,8 @@ public class BombController : MonoBehaviour
             } else {
                 buildingRenderrer.deleteBlock(y_attached_pos, x_pos);
             }
-            bomba.Play();
+            StartCoroutine(
+            buildingGeneratorObject.GetComponent<BombSpawner>().bombSound());
             Destroy(gameObject);
 
         } else {

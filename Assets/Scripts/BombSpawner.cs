@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class BombSpawner : MonoBehaviour
@@ -10,6 +11,7 @@ public class BombSpawner : MonoBehaviour
     BuildingRenderrer buildingRenderrer;
     BuildingController buildingController;
     Stopwatch stopwatch;
+    public AudioSource wybuch;
     bool first_cycle = true;
     System.Random random = new System.Random();
 
@@ -44,5 +46,10 @@ public class BombSpawner : MonoBehaviour
 
             stopwatch.Restart();
         }
+    }
+
+    public IEnumerator bombSound(){
+        wybuch.Play();
+        yield return null;
     }
 }
