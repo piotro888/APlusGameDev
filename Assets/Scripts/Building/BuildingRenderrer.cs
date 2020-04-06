@@ -21,10 +21,17 @@ public class BuildingRenderrer : MonoBehaviour
         {1, 1, 1, 17, 1, 1, 2, 2, 2, 1+8},
         {1, 1+64, 1+64, 17+64, 1, 1, 2, 2, 2, 1+8},
         {1, 1, 1, 17+64, 1, 1, 2, 2, 2, 1+8},
-        {1, 17, 1, 2, 66, 65, 2, 2, 2, 1}
+        {1, 17, 1, 2, 66, 65, 2, 2, 2, 1},
+        {1, 1, 1, 17, 1, 0, 0, 0, 2, 1+8},
+        {1, 1, 1, 17, 1, 1, 2, 2, 2, 1+8},
+        {1, 1+64, 1+64, 17+64, 1, 1, 2, 2, 2, 1+8},
+        {1, 1, 1, 17+64, 1, 1, 2, 2, 2, 1+8},
+        {1, 17, 1, 2, 66, 65, 2, 2, 2, 1},
+        {1, 1, 1, 17, 1, 0, 0, 0, 2, 1+8},
+        {1, 1, 1, 17, 1, 0, 0, 0, 2, 1+8}
     };
-    public GameObject[,,] buildingGameObjects = new GameObject[5, 10, 8];
-    public GameObject[,] emptyGameObjects = new GameObject[5, 10];
+    public GameObject[,,] buildingGameObjects = new GameObject[20, 10, 8];
+    public GameObject[,] emptyGameObjects = new GameObject[20, 10];
 
     public int buildingHeight;
 
