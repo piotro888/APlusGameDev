@@ -9,6 +9,11 @@ public class MenuGłowne : MonoBehaviour
         kan.enabled = false;
     }
 
+    public void grajponownie(){
+        //Time.timeScale=1;
+        Application.LoadLevel("MainScene");
+    }
+
     public void wyjdz()
     {
         Application.Quit();
