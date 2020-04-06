@@ -829,8 +829,8 @@ MonoBehaviour:
   size_y: 3.5
   velocity_ladder: 1.3
   isCollsionWithLadder: 0
-  Ladders: 0
-  ContructionElements: 0
+  Ladders: 5
+  ContructionElements: 6
 --- !u!58 &357320068
 CircleCollider2D:
   m_ObjectHideFlags: 0
