@@ -4,22 +4,27 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour {
 
+   
+
     [Header ("Poruszanie")]
+    
     public Rigidbody2D pl;
     public float velocity_player;
     public GameObject player;
     public Animator anim;
     public float size_x, size_y;
     //public Camera kamera;
-
+    bool czy_chodzi;
     [Header ("Drabina")]
+    public AudioSource cos;
+    public AudioSource podnoszenie;
     public float velocity_ladder;
     public bool isCollsionWithLadder = false;
 
     [Header ("Ekwipunek")]
     public int Ladders;
     public int ContructionElements;
-
+ 
     Collider2D ladderObj;
 
     void OnTriggerEnter2D(Collider2D obj){
@@ -33,6 +38,7 @@ public class Movement : MonoBehaviour {
             ContructionElements+=obj.GetComponent<InBox>().count_ConstructionElements;
             Destroy(obj.gameObject);
             Debug.Log("drabiny: " + Ladders + " i elementy budowy: " + ContructionElements);
+            podnoszenie.Play();
         }
     }
 
@@ -75,19 +81,32 @@ public class Movement : MonoBehaviour {
             if(isCollsionWithLadder==true) anim.SetBool("LadderOn",true);
             else anim.SetBool("LadderOn",false);
 
-                if (Input.GetKey(KeyCode.D))
+            if (Input.GetKey(KeyCode.D))
             {
                 pl.velocity = new Vector2(velocity_player, pl.velocity.y);
                 player.transform.localScale= new Vector2(size_x,size_y);
                 pl.gravityScale=1f;
-            }
+        }
+
             if (Input.GetKey(KeyCode.A))
             {
                 pl.velocity = new Vector2(-velocity_player, pl.velocity.y);
                 player.transform.localScale= new Vector2(-size_x,size_y);
                 pl.gravityScale=1f;
-            }
-        
+        }
+
+        if (pl.velocity.x != 0)
+            czy_chodzi = true;
+        else
+            czy_chodzi = false;
+
+        if (czy_chodzi)
+        {
+            if (!cos.isPlaying)
+                cos.Play();
+        }
+        else
+            cos.Stop();
 
         //roznica = Mathf.Abs(stanPrzed - pl.position.x);
 
@@ -134,4 +153,6 @@ public class Movement : MonoBehaviour {
             serce.GetComponent<Menu>().spawnpoint.transform.position = player.transform.position;
         }
     }*/
+    
+    
 }

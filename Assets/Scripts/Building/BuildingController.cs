@@ -6,6 +6,7 @@ public class BuildingController : MonoBehaviour
 {
     public BuildingRenderrer buildingRenderrer;
     public float frameLineShift = -2.0f;
+    public AudioSource zawalenie;
 
     int minInLine = 4;
 
@@ -42,6 +43,7 @@ public class BuildingController : MonoBehaviour
             for(int i=0; i<buildingRenderrer.building.GetLength(1); i++)
                 buildingRenderrer.deleteEmpty(buildingRenderrer.buildingHeight, i);
         }
+        zawalenie.Play();
     }
 
     void FixedUpdate(){
@@ -88,7 +90,7 @@ public class BuildingController : MonoBehaviour
     }
 
     public bool isEmptyObject(int x, int y){
-        return buildingRenderrer.emptyGameObjects[x, y] != null;
+        return buildingRenderrer.building[x,y] == 0;
     }
 
     public bool isReinforcedObject(int x, int y){
