@@ -10,7 +10,6 @@ public class MenuGłowne : MonoBehaviour
     }
 
     public void grajponownie(){
-        //Time.timeScale=1;
         Application.LoadLevel("MainScene");
     }
 
