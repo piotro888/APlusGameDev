@@ -5,7 +5,7 @@ using System.Diagnostics;
 public class BombController : MonoBehaviour
 {
     public Slider progressBar;
-
+    public AudioSource bomba;
     GameObject buildingGeneratorObject;
     BuildingRenderrer buildingRenderrer;
     BuildingController buildingController;
@@ -24,6 +24,10 @@ public class BombController : MonoBehaviour
 
     
     void FixedUpdate(){
+
+     
+
+
         if(stopwatch.ElapsedMilliseconds > 3000){
             stopwatch.Stop();
             int x_pos = (int)Mathf.Floor(transform.position.x) - (int) Mathf.Floor(buildingGeneratorObject.transform.position.x);
@@ -79,6 +83,7 @@ public class BombController : MonoBehaviour
             } else {
                 buildingRenderrer.deleteBlock(y_attached_pos, x_pos);
             }
+            if (attachedObject != null) bomba.Play();
             Destroy(gameObject);
 
         } else {
