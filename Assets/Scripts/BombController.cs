@@ -83,7 +83,7 @@ public class BombController : MonoBehaviour
             } else {
                 buildingRenderrer.deleteBlock(y_attached_pos, x_pos);
             }
-            if (attachedObject != null) bomba.Play();
+            bomba.Play();
             Destroy(gameObject);
 
         } else {
