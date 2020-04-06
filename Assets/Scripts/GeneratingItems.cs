@@ -21,15 +21,13 @@ public class GeneratingItems : MonoBehaviour
     void Start()
     {
        width = this.GetComponent<BuildingRenderrer>().building.GetLength(1);
-       height = this.GetComponent<BuildingRenderrer>().building.GetLength(0);;
-       Debug.Log(width + " " + height);
     }
 
     void Update()
     {
        if(time<=current_time){
+            height = this.GetComponent<BuildingRenderrer>().buildingHeight;
             pos=Random.Range(1,(width*height));
-            Debug.Log(pos);
             for(int i=0;i<height;i++)
                 for(int j=0;j<width&&pos>0;j++){
                     pos--;
