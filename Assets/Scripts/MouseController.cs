@@ -7,6 +7,7 @@ public class MouseController : MonoBehaviour
     public GameObject hlOK;
     public GameObject hlWA;
     public GameObject player;
+    public GameObject playermid;
     public AudioSource blok;
 
     GameObject lastObj;
@@ -28,28 +29,35 @@ public class MouseController : MonoBehaviour
 
         if(Input.GetMouseButtonDown(0) && hit.collider != null){
             if(canBuild(hit)){
-                Vector2 hit_pos = hit.collider.gameObject.transform.position;
-                int x_array_pos = (int) Mathf.Floor(hit_pos.x - transform.position.x );
-                int y_array_pos = (int) Mathf.Floor(hit_pos.y - transform.position.y);
-                if(buildingController.isEmptyObject(y_array_pos, x_array_pos)){
-                    buildingRenderrer.addElement(2, y_array_pos, x_array_pos, false);
-                } else {
-                    buildingRenderrer.addElement(5, y_array_pos, x_array_pos, false);
+                if(playermid.GetComponent<Movement>().ContructionElements > 0){
+                    Vector2 hit_pos = hit.collider.gameObject.transform.position;
+                    int x_array_pos = (int) Mathf.Floor(hit_pos.x - transform.position.x );
+                    int y_array_pos = (int) Mathf.Floor(hit_pos.y - transform.position.y);
+                    if(buildingController.isEmptyObject(y_array_pos, x_array_pos)){
+                        buildingRenderrer.addElement(2, y_array_pos, x_array_pos, false);
+                    } else {
+                        buildingRenderrer.addElement(5, y_array_pos, x_array_pos, false);
+                    }
+                    playermid.GetComponent<Movement>().ContructionElements--;
+                    blok.Play();
                 }
             }
-            blok.Play();
+            
         }
 
         if(Input.GetMouseButtonDown(1) && hit.collider != null){
             if(canBuild(hit)){
-                Vector2 hit_pos = hit.collider.gameObject.transform.position;
-                int x_array_pos = (int) Mathf.Floor(hit_pos.x - transform.position.x );
-                int y_array_pos = (int) Mathf.Floor(hit_pos.y - transform.position.y);
-                if(buildingController.isSolidObject(y_array_pos, x_array_pos)){
-                    buildingRenderrer.addElement(4, y_array_pos, x_array_pos, false);
+                if(playermid.GetComponent<Movement>().Ladders > 0){
+                    Vector2 hit_pos = hit.collider.gameObject.transform.position;
+                    int x_array_pos = (int) Mathf.Floor(hit_pos.x - transform.position.x );
+                    int y_array_pos = (int) Mathf.Floor(hit_pos.y - transform.position.y);
+                    if(buildingController.isSolidObject(y_array_pos, x_array_pos)){
+                        buildingRenderrer.addElement(4, y_array_pos, x_array_pos, false);
+                    }
+                    playermid.GetComponent<Movement>().Ladders--;
+                    blok.Play();
                 }
             }
-            blok.Play();
         }
 
         if(hit.collider != null) {
