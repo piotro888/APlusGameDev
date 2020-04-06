@@ -90,7 +90,7 @@ public class BuildingController : MonoBehaviour
     }
 
     public bool isEmptyObject(int x, int y){
-        return buildingRenderrer.emptyGameObjects[x, y] != null;
+        return buildingRenderrer.building[x,y] == 0;
     }
 
     public bool isReinforcedObject(int x, int y){
