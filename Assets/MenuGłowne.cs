@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class MenuGłowne : MonoBehaviour
 {
