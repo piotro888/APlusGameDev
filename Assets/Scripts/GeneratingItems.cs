@@ -14,6 +14,7 @@ public class GeneratingItems : MonoBehaviour
 
     private int width, height,pos; 
     private float time=0,current_time;
+    public int nr=10;
 
     public int setLadders = 3;
     public int setConstructionElements = 5;
@@ -24,6 +25,7 @@ public class GeneratingItems : MonoBehaviour
     void Start()
     {
        width = this.GetComponent<BuildingRenderrer>().building.GetLength(1);
+       Debug.Log(nr);
     }
 
     void Update()

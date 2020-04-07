@@ -6,7 +6,7 @@ public class VolumeValueChange : MonoBehaviour {
 
 	void Start () {
         audioSrc = GetComponent<AudioSource>();
-	}
+        }
 	
 
 	void Update () {
