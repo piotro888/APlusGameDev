@@ -16,6 +16,10 @@ public class MenuGłowne : MonoBehaviour
         Application.LoadLevel("MainScene");
     }
 
+    public void loadMain(){
+        Application.LoadLevel("StartMenu");
+    }
+
     public void wyjdz()
     {
         Application.Quit();
