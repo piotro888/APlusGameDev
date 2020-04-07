@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df5931a7e929d5343bff05ea2065eb61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  max_count_Ladders: 5
+  max_count_Ladders: 3
   max_count_ConstrucionElements: 5
   count_Ladders: 0
   count_ConstructionElements: 0

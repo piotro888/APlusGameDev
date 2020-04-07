@@ -52,7 +52,8 @@ public class Movement : MonoBehaviour {
     void OnTriggerExit2D(Collider2D obj) {
         if (obj.gameObject.tag == "Ladder") {
             player.GetComponent<Collider2D>().isTrigger = false;
-            if (obj == ladderObj) isCollsionWithLadder = false;
+           // if (obj == ladderObj) 
+            isCollsionWithLadder = false;
         }
     }
 

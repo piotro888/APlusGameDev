@@ -435,7 +435,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 244266001}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.17168736, y: 2.6280003, z: -10}
+  m_LocalPosition: {x: 0.16963029, y: 2.6280003, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 444431541}
@@ -461,7 +461,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bomb: {fileID: 651416851139205706, guid: 7c4eb2ffc03f3ee438025a03cb378405, type: 3}
-  gen_time: 3000
+  gen_time: 2000
   wybuch: {fileID: 1916617111}
 --- !u!114 &282889844
 MonoBehaviour:
@@ -497,7 +497,21 @@ MonoBehaviour:
   distance: 1
   time_generating_for: 5
   time_generating_to: 15
+  setLadders: 3
+  setConstructionElements: 5
   Box: {fileID: 6055640247990649421, guid: ed5e6b684e8d39b4db7d69f86a49947d, type: 3}
+--- !u!114 &282889847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 282889840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9eaa696a1f817316a91e8502b120edad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &317576259
 GameObject:
   m_ObjectHideFlags: 0
@@ -4034,7 +4048,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1836990037}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.17168736, y: 2.6280003, z: -10}
+  m_LocalPosition: {x: 0.16963029, y: 2.6280003, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1878067555}
@@ -4887,7 +4901,7 @@ GameObject:
   - component: {fileID: 1976590368}
   - component: {fileID: 1976590369}
   m_Layer: 5
-  m_Name: GameObject
+  m_Name: TimerObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4945,7 +4959,7 @@ MonoBehaviour:
   buildingGen: {fileID: 282889840}
   end_Text: {fileID: 1033816285}
   score_Text: {fileID: 1816227863}
-  endTime: 350
+  endTime: 300
   EndGame: {fileID: 1464536526}
 --- !u!1 &2117296198
 GameObject:

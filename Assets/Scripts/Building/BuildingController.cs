@@ -15,6 +15,7 @@ public class BuildingController : MonoBehaviour
 
     void Start(){
         buildingRenderrer.render(); //render building on start
+        GetComponent<LevelSelector>().selectLevel(2);
     }
 
     public bool checkIfLineValid(int line){
