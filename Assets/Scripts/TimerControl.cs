@@ -34,7 +34,8 @@ public class TimerControl : MonoBehaviour
         int elapsedSeconds = (int) Mathf.Floor(stopwatch.ElapsedMilliseconds / 1000f);
         int timepart = elapsedSeconds*10;
         int floorpart = buildingGen.GetComponent<BuildingRenderrer>().buildingHeight * 100;
-        return timepart + floorpart;
+        int savedScore = buildingGen.GetComponent<BuildingRenderrer>().savedObjectsScore;
+        return timepart + floorpart + savedScore;
     }
 
     public void EndMenu(bool win){
