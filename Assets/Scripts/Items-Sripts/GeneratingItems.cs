@@ -14,10 +14,6 @@ public class GeneratingItems : MonoBehaviour
 
     private int width, height,pos; 
     private float time=0,current_time;
-    public int nr=10;
-
-    public int setLadders = 3;
-    public int setConstructionElements = 5;
 
     public GameObject Box;
 
@@ -25,7 +21,6 @@ public class GeneratingItems : MonoBehaviour
     void Start()
     {
        width = this.GetComponent<BuildingRenderrer>().building.GetLength(1);
-       Debug.Log(nr);
     }
 
     void Update()
@@ -36,11 +31,8 @@ public class GeneratingItems : MonoBehaviour
             for(int i=0;i<height;i++)
                 for(int j=0;j<width&&pos>0;j++){
                     pos--;
-                    if(pos==0){
-                        GameObject generated = Instantiate(Box,new Vector3(left+j*distance,bot+i*distance,0f),Quaternion.identity);
-                        generated.GetComponent<InBox>().max_count_Ladders = setLadders;
-                        generated.GetComponent<InBox>().max_count_ConstrucionElements = setConstructionElements;
-                    }
+                    if(pos==0)
+                    Instantiate(Box,new Vector3(left+j*distance,bot+i*distance,0f),Quaternion.identity);
                 }
 
            current_time=Time.deltaTime;

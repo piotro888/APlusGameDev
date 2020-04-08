@@ -9,6 +9,7 @@ public class TimerControl : MonoBehaviour
     public TMPro.TextMeshProUGUI scoreText;
     public TMPro.TextMeshProUGUI fpsText;
     public GameObject buildingGen;
+    public GameObject midplayer;
     public TMPro.TextMeshProUGUI end_Text;
     public TMPro.TextMeshProUGUI score_Text;
     public int endTime = 180;
@@ -34,16 +35,17 @@ public class TimerControl : MonoBehaviour
         int elapsedSeconds = (int) Mathf.Floor(stopwatch.ElapsedMilliseconds / 1000f);
         int timepart = elapsedSeconds*10;
         int floorpart = buildingGen.GetComponent<BuildingRenderrer>().buildingHeight * 100;
-        int savedScore = buildingGen.GetComponent<BuildingRenderrer>().savedObjectsScore;
-        return timepart + floorpart + savedScore;
+        return timepart + floorpart;
     }
 
     public void EndMenu(bool win){
         stopwatch.Stop();
+
         //buildingGen.enabled = false;
+        midplayer.GetComponent<Movement>().end=true;
         buildingGen.gameObject.SetActive(false);
         if(win==true) end_Text.text= "You Won!";
-        else end_Text.text = "Przegrales Synu";
+        else end_Text.text = "You Lost";
         score_Text.text = "Score: " + calcScore();
         EndGame.enabled=true;
 
