@@ -35,7 +35,8 @@ public class TimerControl : MonoBehaviour
         int timepart = elapsedSeconds*10;
         int floorpart = buildingGen.GetComponent<BuildingRenderrer>().buildingHeight * 100;
         int savedScore = buildingGen.GetComponent<BuildingRenderrer>().savedObjectsScore;
-        return timepart + floorpart + savedScore;
+        int destroyScore = buildingGen.GetComponent<BuildingRenderrer>().destroyedObjectsScore;
+        return timepart + floorpart + savedScore + destroyScore;
     }
 
     public void EndMenu(bool win){

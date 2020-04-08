@@ -35,10 +35,12 @@ public class BuildingRenderrer : MonoBehaviour
 
     public int buildingHeight;
     public int savedObjectsScore;
+    public int destroyedObjectsScore;
 
     void Start(){
         buildingHeight = building.GetLength(0);
         savedObjectsScore = building.GetLength(0)*building.GetLength(1)*10;
+        destroyedObjectsScore = savedObjectsScore*2;
     }
 
     ///Render building based on public building array.

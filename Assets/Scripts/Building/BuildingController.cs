@@ -15,8 +15,8 @@ public class BuildingController : MonoBehaviour
 
     void Start(){
         buildingRenderrer.render(); //render building on start
-        Options opt = GameObject.Find("Options").GetComponent<Options>();
-        GetComponent<LevelSelector>().selectLevel(opt.level);
+       // Options opt = GameObject.Find("Options").GetComponent<Options>();
+        //GetComponent<LevelSelector>().selectLevel(opt.level);
     }
 
     public bool checkIfLineValid(int line){
