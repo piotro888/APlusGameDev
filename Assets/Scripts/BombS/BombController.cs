@@ -39,7 +39,6 @@ public class BombController : MonoBehaviour
                     buildingRenderrer.deleteElement(5, y_attached_pos+1, x_pos);
                 else if(buildingRenderrer.building[y_attached_pos+1, x_pos] != 0 ){
                     buildingRenderrer.deleteBlock(y_attached_pos+1, x_pos);
-                    buildingRenderrer.destroyedScore-=10;
                 }
             }
 
@@ -48,7 +47,6 @@ public class BombController : MonoBehaviour
                     buildingRenderrer.deleteElement(5, y_attached_pos-1, x_pos);
                 else if(buildingRenderrer.building[y_attached_pos-1, x_pos] != 0 ){
                     buildingRenderrer.deleteBlock(y_attached_pos-1, x_pos);
-                    buildingRenderrer.destroyedScore-=10;
                 }
             }
 
@@ -57,7 +55,6 @@ public class BombController : MonoBehaviour
                     buildingRenderrer.deleteElement(5, y_attached_pos, x_pos+1);
                 else if(buildingRenderrer.building[y_attached_pos, x_pos+1] != 0){
                     buildingRenderrer.deleteBlock(y_attached_pos, x_pos+1);
-                    buildingRenderrer.destroyedScore-=10;
                 }
             }
 
@@ -66,7 +63,6 @@ public class BombController : MonoBehaviour
                     buildingRenderrer.deleteElement(5, y_attached_pos, x_pos-1);
                 else if(buildingRenderrer.building[y_attached_pos, x_pos-1] != 0){
                     buildingRenderrer.deleteBlock(y_attached_pos, x_pos-1);
-                    buildingRenderrer.destroyedScore-=10;
                 }
             }
 
@@ -86,7 +82,6 @@ public class BombController : MonoBehaviour
                 buildingRenderrer.deleteElement(5, y_attached_pos, x_pos);
             } else {
                 buildingRenderrer.deleteBlock(y_attached_pos, x_pos);
-                buildingRenderrer.destroyedScore-=10;
             }
             StartCoroutine(
             buildingGeneratorObject.GetComponent<BombSpawner>().bombSound());

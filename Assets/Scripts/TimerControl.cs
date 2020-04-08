@@ -35,9 +35,7 @@ public class TimerControl : MonoBehaviour
         int elapsedSeconds = (int) Mathf.Floor(stopwatch.ElapsedMilliseconds / 1000f);
         int timepart = elapsedSeconds*10;
         int floorpart = buildingGen.GetComponent<BuildingRenderrer>().buildingHeight * 100;
-        int savedScore = buildingGen.GetComponent<BuildingRenderrer>().savedObjectsScore;
-        int destroyedScore = buildingGen.GetComponent<BuildingRenderrer>().destroyedScore;
-        return timepart + floorpart + savedScore + destroyedScore;
+        return timepart + floorpart;
     }
 
     public void EndMenu(bool win){
@@ -47,7 +45,7 @@ public class TimerControl : MonoBehaviour
         midplayer.GetComponent<Movement>().end=true;
         buildingGen.gameObject.SetActive(false);
         if(win==true) end_Text.text= "You Won!";
-        else end_Text.text = "Przegrales synu";
+        else end_Text.text = "You Lost";
         score_Text.text = "Score: " + calcScore();
         EndGame.enabled=true;
 

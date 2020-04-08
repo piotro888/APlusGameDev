@@ -34,13 +34,9 @@ public class BuildingRenderrer : MonoBehaviour
     public GameObject[,] emptyGameObjects = new GameObject[20, 10];
 
     public int buildingHeight;
-    public int savedObjectsScore;
-    public int destroyedScore;
 
     void Start(){
         buildingHeight = building.GetLength(0);
-        savedObjectsScore = building.GetLength(0)*building.GetLength(1)*10;
-        destroyedScore = savedObjectsScore*2;
     }
 
     ///Render building based on public building array.
@@ -78,10 +74,6 @@ public class BuildingRenderrer : MonoBehaviour
     }
 
     public void deleteBlock(int x, int y){
-        if((building[x,y] & 1) != 0 ||
-        (building[x,y] & 2) != 0){
-            savedObjectsScore-=10;
-        }
         for(int i=0; i<gameObjects.Length-1; i++){
             if((building[x,y] & (1<<i)) != 0){
                 deleteElement(i, x, y);
