@@ -13,6 +13,7 @@ public class Movement : MonoBehaviour {
     public GameObject player;
     public Animator anim;
     public float size_x, size_y;
+    public bool end=false;
     //public Camera kamera;
     bool czy_chodzi, czy_drabina;
     [Header("Drabina")]
@@ -61,7 +62,7 @@ public class Movement : MonoBehaviour {
         //kamera.transform.position = new Vector3(player.transform.position.x,player.transform.position.y,-10f);
         anim.SetFloat("animacjapor", Mathf.Abs(pl.velocity.x));
         anim.SetFloat("animacjaskok", Mathf.Abs(pl.velocity.y));
-
+        if(end==false){
         if (isCollsionWithLadder) {
             pl.gravityScale = 0.5f;
             if (Input.GetKey(KeyCode.W)) {
@@ -121,30 +122,8 @@ public class Movement : MonoBehaviour {
         }
         else
             drabina.Stop();
-
-
-
-        //roznica = Mathf.Abs(stanPrzed - pl.position.x);
-
-
-        /*if (jestDrabina == true)
-        {
-            pl.gravityScale = 1f;
-            animacja.SetBool("drabinka", jestDrabina);
-            animacja.SetBool("skok", true);
-            animacja.SetBool("woda", jestWoda);
-
-        }
-        else
-        {
-            pl.gravityScale = 1f;
-            animacja.SetBool("drabinka", jestDrabina);
-            animacja.SetFloat("velocity_player", roznica);
-            animacja.SetBool("skok", dotyka);
-            animacja.SetBool("woda", jestWoda);
-        }*/
-
     }
+    else {pl.gravityScale = 0f;pl.velocity = new Vector2(0f, 0f);}}
 
     public int getLadders(){
         return Ladders;
@@ -153,22 +132,6 @@ public class Movement : MonoBehaviour {
     public int getConstructionElements(){
         return ContructionElements;
     }
-
-    /*private void OnTriggerEnter2D(Collider2D obj)
-    {
-        if (obj.gameObject.tag == "przeciwnik")
-        {            
-            serce.GetComponent<Menu>().Umiera();
-        }
-        if(obj.gameObject.tag == "koniec")
-        {
-            
-        }
-        if (obj.gameObject.tag == "spawnpoint")
-        {
-            serce.GetComponent<Menu>().spawnpoint.transform.position = player.transform.position;
-        }
-    }*/
     
     
 }
