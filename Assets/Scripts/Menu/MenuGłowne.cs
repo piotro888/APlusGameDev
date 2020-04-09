@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 
 public class MenuGłowne : MonoBehaviour
@@ -50,6 +51,7 @@ public class MenuGłowne : MonoBehaviour
 
     public void musicoff(){
         if(off==true){
+        EventSystem.current.SetSelectedGameObject(null);
         gm.GetComponent<VolumeValueChange>().musicVolume=0f;
         gm.GetComponent<VolumeValueChange>().soundsVolume=0f;
         this.GetComponent<Sounds_Settings>().SetSounds();
@@ -57,6 +59,7 @@ public class MenuGłowne : MonoBehaviour
         off=false;
         }
         else{
+            EventSystem.current.SetSelectedGameObject(null);
            gm.GetComponent<VolumeValueChange>().musicVolume=opt.GetComponent<Options>().volume_music;
         gm.GetComponent<VolumeValueChange>().soundsVolume=opt.GetComponent<Options>().volume_sounds;
         this.GetComponent<Sounds_Settings>().SetSounds();
