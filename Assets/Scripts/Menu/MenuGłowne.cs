@@ -29,7 +29,11 @@ public class MenuGłowne : MonoBehaviour
 
     public void graj()
     {
-        kan.enabled = false;
+        if(opt.GetComponent<Options>().first==true) {
+            Application.LoadLevel("Instructions");
+            opt.GetComponent<Options>().first=false;
+        }
+        else grajponownie();
     }
 
     public void grajponownie(){

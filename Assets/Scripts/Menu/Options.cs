@@ -8,6 +8,7 @@ public class Options : MonoBehaviour
     public float volume_sounds=1f;
     public float volume_music=1f;
     public bool fullscreen=true;
+    public bool first=true;
 
     private void Awake()
 {
