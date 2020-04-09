@@ -1857,6 +1857,7 @@ GameObject:
   - component: {fileID: 1084198851}
   - component: {fileID: 1084198850}
   - component: {fileID: 1084198853}
+  - component: {fileID: 1084198854}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1946,6 +1947,19 @@ MonoBehaviour:
   fullscreen_toggle: {fileID: 0}
   image_button: {fileID: 0}
   sprites: []
+--- !u!114 &1084198854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1084198849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec6ab19a5485bcdb185faec7ae54e9b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _wantedAspectRatio: 1.777778
 --- !u!1 &1120704822
 GameObject:
   m_ObjectHideFlags: 0
