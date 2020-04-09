@@ -913,7 +913,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Your goal is to maintain as many floors of building as possible at the
     end of game time. \r\n - Randomly genereted bombs are destroing building.\r\n-
-    Floor collapses when there are less than 4 blocks.\r\n - To prevent building
+    Floor collapses when there are less than 3 blocks.\r\n - To prevent building
     from collapsing you can build new blocks in the place of old ones or reinforce
     existing blocks.\r\n - You can't rebuild the collapsed floor.\r\n - Player can't
     jump. You can only move left/right (on platforms) and up/down (on ladder).\r\n-
