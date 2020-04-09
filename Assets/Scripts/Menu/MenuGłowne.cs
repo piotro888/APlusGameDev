@@ -20,9 +20,9 @@ public class MenuGłowne : MonoBehaviour
         opt = GameObject.Find("Options");
         fullscreen_toggle.isOn=opt.GetComponent<Options>().fullscreen;
         levele[opt.GetComponent<Options>().levels].GetComponent<Image>().color = Color.red;
-        /*for(int i=1;i<=3;i++) if(i!=opt.GetComponent<Options>().levels){
+        for(int i=1;i<=4;i++) if(i!=opt.GetComponent<Options>().levels){
             levele[i].GetComponent<Image>().color = Color.white;
-        }*/
+        }
 
     }
 
@@ -49,23 +49,25 @@ public class MenuGłowne : MonoBehaviour
     }
 
     public void musicoff(){
-        if(off==false){
+        if(off==true){
         gm.GetComponent<VolumeValueChange>().musicVolume=0f;
         gm.GetComponent<VolumeValueChange>().soundsVolume=0f;
+        this.GetComponent<Sounds_Settings>().SetSounds();
         image_button.image.sprite=sprites[1];
-        off=true;
+        off=false;
         }
         else{
            gm.GetComponent<VolumeValueChange>().musicVolume=opt.GetComponent<Options>().volume_music;
         gm.GetComponent<VolumeValueChange>().soundsVolume=opt.GetComponent<Options>().volume_sounds;
+        this.GetComponent<Sounds_Settings>().SetSounds();
         image_button.image.sprite=sprites[0]; 
-        off=false;
+        off=true;
         }
 
     }
     public void level(int nr){
         levele[nr].GetComponent<Image>().color = Color.red;
-        for(int i=1;i<=3;i++) if(i!=nr){
+        for(int i=1;i<=4;i++) if(i!=nr){
             levele[i].GetComponent<Image>().color = Color.white;
         }
         opt.GetComponent<Options>().levels=nr;

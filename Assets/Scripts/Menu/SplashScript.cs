@@ -12,7 +12,7 @@ public class SplashScript : MonoBehaviour
     void Update(){
         if(stopwatch.ElapsedMilliseconds > 4000){
             stopwatch.Stop();
-            Application.LoadLevelAsync("StartMenu");
+            Application.LoadLevel("StartMenu");
         }
     }
 }

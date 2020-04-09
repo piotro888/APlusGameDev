@@ -14,12 +14,18 @@ public class Sounds_Settings : MonoBehaviour
     private GameObject opt;
     private float vol;
 
-    private void Start()
-    {
-        gm = GameObject.Find("Music");
+    private void Start(){
+         gm = GameObject.Find("Music");
         opt = GameObject.Find("Options");
         opt.GetComponent<Options>().volume_music=gm.GetComponent<VolumeValueChange>().musicVolume;
         opt.GetComponent<Options>().volume_sounds=gm.GetComponent<VolumeValueChange>().soundsVolume;
+        SetSounds();
+    }
+
+    public void SetSounds()
+    {
+        //gm.GetComponent<VolumeValueChange>().musicVolume=opt.GetComponent<Options>().volume_music;
+        //gm.GetComponent<VolumeValueChange>().soundsVolume=opt.GetComponent<Options>().volume_sounds;
         vol=gm.GetComponent<VolumeValueChange>().soundsVolume;
         chodzenie.volume=(vol/4f);
         zawalenie.volume=(vol/2f);

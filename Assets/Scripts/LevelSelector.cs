@@ -12,7 +12,7 @@ public class LevelSelector : MonoBehaviour
             GetComponent<GeneratingItems>().time_generating_for = 15;
             GetComponent<GeneratingItems>().setLadders = 5;
             GetComponent<GeneratingItems>().setConstructionElements = 5;
-            GameObject.Find("TimerObject").GetComponent<TimerControl>().endTime = 280;
+            GameObject.Find("TimerObject").GetComponent<TimerControl>().endTime = 10;   //280
             GameObject.Find("mid").GetComponent<Movement>().Ladders = 4;
             GameObject.Find("mid").GetComponent<Movement>().ContructionElements = 2;
 
