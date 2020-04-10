@@ -12,6 +12,7 @@ public class Options : MonoBehaviour
 
     private void Awake()
 {
+  Screen.fullScreen=first;
   DontDestroyOnLoad(gameObject);
 }
 
