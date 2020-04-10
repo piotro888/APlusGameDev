@@ -15,6 +15,7 @@ public class LevelSelector : MonoBehaviour
             GameObject.Find("TimerObject").GetComponent<TimerControl>().endTime = 280;   
             GameObject.Find("mid").GetComponent<Movement>().Ladders = 4;
             GameObject.Find("mid").GetComponent<Movement>().ContructionElements = 2;
+            GetComponent<BuildingRenderrer>().addElement(3, 0, 5, false);
 
         } else if(lvl == 2){
 
@@ -26,6 +27,7 @@ public class LevelSelector : MonoBehaviour
             GameObject.Find("TimerObject").GetComponent<TimerControl>().endTime = 300;
             GameObject.Find("mid").GetComponent<Movement>().Ladders = 1;
             GameObject.Find("mid").GetComponent<Movement>().ContructionElements = 0;
+            GetComponent<BuildingRenderrer>().addElement(3, 0, 5, false);
 
         } else if(lvl == 3){
 
