@@ -10,7 +10,7 @@ public class MenuGłowne : MonoBehaviour
     public Canvas kan;
     private GameObject gm;
     private GameObject opt;
-    private bool off=true;
+    public bool off=true;
     public Button[] levele;
     public Toggle fullscreen_toggle;
     public Button image_button;
