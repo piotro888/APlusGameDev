@@ -15,10 +15,15 @@ public class Sounds_Settings : MonoBehaviour
     private float vol;
 
     private void Start(){
-         gm = GameObject.Find("Music");
+        gm = GameObject.Find("Music");
         opt = GameObject.Find("Options");
+        if(gm.GetComponent<VolumeValueChange>().musicVolume!=0f && gm.GetComponent<VolumeValueChange>().soundsVolume!=0f){
         opt.GetComponent<Options>().volume_music=gm.GetComponent<VolumeValueChange>().musicVolume;
-        opt.GetComponent<Options>().volume_sounds=gm.GetComponent<VolumeValueChange>().soundsVolume;
+        opt.GetComponent<Options>().volume_sounds=gm.GetComponent<VolumeValueChange>().soundsVolume;}
+        else{
+            this.GetComponent<MenuGłowne>().image_button.image.sprite=this.GetComponent<MenuGłowne>().sprites[1];
+            this.GetComponent<MenuGłowne>().off=false;
+        }
         SetSounds();
     }
 
